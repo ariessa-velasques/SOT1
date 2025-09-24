@@ -33,17 +33,17 @@ O projeto consiste em um único script Python. Para executá-lo:
 
 É um algoritmo preemptivo projetado para sistemas de tempo compartilhado.
 
-  * **Funcionamento:** Cada processo recebe uma pequena unidade de tempo de CPU chamada *quantum* (nesta simulação, `quantum = 4`). O processo executa por até um quantum. Se ele não terminar, é interrompido (preempção) e movido para o final da fila de prontos, e a CPU é alocada ao próximo processo.
+  * **Funcionamento:** Cada processo recebe uma pequena unidade de tempo de CPU chamada *quantum* (nesta simulação, `quantum = 6`). O processo executa por até um quantum. Se ele não terminar, é interrompido (preempção) e movido para o final da fila de prontos, e a CPU é alocada ao próximo processo.
   * **Vantagem:** Evita que processos longos bloqueiem processos curtos, proporcionando um tempo de resposta mais justo e rápido para sistemas interativos.
 
 
 ## A simulação foi executada com o seguinte conjunto de processos:
 
 | Processo | Tempo de Chegada | Tempo de Processamento |
-| :---: | :---: | :---: |
-| P1 | 3 | 9 |
-| P2 | 4 | 15 |
-| P3 | 7 | 5 |
-| P4 | 9 | 12 |
-| P5 | 15 | 10 |
+| :------: | :--------------: | :--------------------: |
+| P1       |                3 |                      9 |
+| P2       |                4 |                     15 |
+| P3       |                7 |                      5 |
+| P4       |                9 |                     12 |
+| P5       |               15 |                     10 |
 
