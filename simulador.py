@@ -25,6 +25,7 @@ def main():
 
     print("\nResultados FIFO:")
     print(f"{'Processo':<10} {'Chegada':<8} {'Processamento':<14} {'Finalização':<12} {'Tempo de Ciclo':<15}")
+    
     tempo_ciclo_total_fifo = 0
     for processo in resultados_fifo:
         tempo_ciclo = processo.tempo_finalizacao - processo.tempo_chegada
@@ -39,6 +40,7 @@ def main():
     
     print("\nResultados Round Robin:")
     print(f"{'Processo':<10} {'Chegada':<8} {'Processamento':<14} {'Finalização':<12} {'Tempo de Ciclo':<15}")
+    
     tempo_ciclo_total_rr = 0
     for processo in resultados_rr:
         tempo_ciclo = processo.tempo_finalizacao - processo.tempo_chegada
@@ -54,8 +56,17 @@ def main():
     tempo_ciclo_medio_fifo = tempo_ciclo_total_fifo / len(resultados_fifo)
     tempo_ciclo_medio_rr = tempo_ciclo_total_rr / len(resultados_rr)
 
-    fifo_ordenado = sorted(resultados_fifo, key=lambda p: p.id)
-    rr_ordenado = sorted(resultados_rr, key=lambda p: p.id)
+    fifo_ordenado = []
+    for i in range(1, 6):
+        for processo in resultados_fifo:
+            if processo.id == i:
+                fifo_ordenado.append(processo)
+
+    rr_ordenado = []
+    for i in range(1, 6):
+        for processo in resultados_rr:
+            if processo.id == i:
+                rr_ordenado.append(processo)
 
     for i in range(len(fifo_ordenado)):
         ciclo_fifo = fifo_ordenado[i].tempo_finalizacao - fifo_ordenado[i].tempo_chegada
@@ -134,7 +145,7 @@ def simular_round_robin(processos_iniciais, quantum=6):
 
         if not processo_executando and fila_prontos:
             processo_executando = fila_prontos.pop(0)
-            tempo_executando = 0 #essa parte é pra reiniciar o contador do quantum
+            tempo_executando = 0 
 
         imprimir_estado(tempo_atual, processo_executando, fila_prontos)
 
